@@ -6,8 +6,8 @@ pipeline {
         stage('Sync gitee repo') {
             environment {
                 GITEE_API_TOKEN = credentials('GITEE_API_TOKEN_FOR_RUYISDK_GITEE_MIRROR')
-                GITEE_REPO = 'ruyisdk/ruyi-gitee-mirror'
-                GITHUB_REPO = "https://github.com/weilinfox/ruyi-gitee-mirror.git"
+                GITEE_REPO = 'ruyisdk/ruyi-mugen'
+                GITHUB_REPO = "https://github.com/weilinfox/ruyi-mugen.git"
             }
 
             steps {
