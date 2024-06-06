@@ -11,10 +11,17 @@ pipeline {
             }
 
             steps {
-                sh 'git clone https://${GITEE_APT_TOKEN}@gitee.com/${GITEE_REPO}.git orig --depth=1'
+                sh '[ -e orig ] && rm -rf orig'
+                sh 'git clone https://${GITEE_API_TOKEN}@gitee.com/${GITEE_REPO}.git orig --depth=1'
                 sh 'cd orig && git pull https://github.com/weilinfox/ruyi-gitee-mirror.git'
                 sh 'cd orig && git push'
                 sh 'cd orig && git push --tags'
+            }
+
+            post {
+                always {
+                    cleanWs()
+                }
             }
         }
     }
